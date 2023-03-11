@@ -1,9 +1,11 @@
 package com.jshvarts.daggerandroidmvp.lobby;
 
-import com.jakewharton.rxrelay2.BehaviorRelay;
+import com.jakewharton.rxrelay3.BehaviorRelay;
 import com.jshvarts.daggerandroidmvp.common.LoadCommonGreetingUseCase;
 import com.jshvarts.daggerandroidmvp.mvp.BasePresenter;
 import com.jshvarts.daggerandroidmvp.rx.SchedulersFacade;
+
+import org.w3c.dom.ls.LSOutput;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -57,7 +59,7 @@ class LobbyPresenter extends BasePresenter<LobbyGreetingContract.LobbyView>
     private void publishRequestState(RequestState requestState) {
         addDisposable(Observable.just(requestState)
                 .observeOn(schedulersFacade.ui())
-                .subscribe(requestStateObserver));
+                .subscribe());
     }
 
     private void observeRequestState() {

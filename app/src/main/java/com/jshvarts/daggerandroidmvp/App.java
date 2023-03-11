@@ -3,16 +3,13 @@ package com.jshvarts.daggerandroidmvp;
 import android.app.Activity;
 import android.app.Application;
 
-import com.jshvarts.daggerandroidmvp.di.DaggerAppComponent;
-
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
 import timber.log.Timber;
 
-public class App extends Application implements HasActivityInjector {
+public class App extends Application implements  HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
@@ -21,14 +18,14 @@ public class App extends Application implements HasActivityInjector {
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
+            Timber.plant();
         }
 
-        DaggerAppComponent
-                .builder()
-                .application(this)
-                .build()
-                .inject(this);
+//        DaggerAppComponent
+//                .builder()
+//                .application(this)
+//                .build()
+//                .inject(this);
     }
 
     @Override
